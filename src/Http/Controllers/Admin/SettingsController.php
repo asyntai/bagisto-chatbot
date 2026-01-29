@@ -50,11 +50,8 @@ class SettingsController extends Controller
     public function save(Request $request): JsonResponse
     {
         try {
-            $data = $request->json()->all();
-
-            if (!is_array($data)) {
-                $data = $request->all();
-            }
+            // Get data from request - works for both JSON and form data
+            $data = $request->all();
 
             $siteId = $data['site_id'] ?? null;
 
